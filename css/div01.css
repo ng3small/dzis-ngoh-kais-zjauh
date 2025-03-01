@@ -1,22 +1,31 @@
+:root {
+    --color_dark: rgb(91, 89, 0);
+    --color_medium: rgb(164, 161, 0);
+    --color_light: rgb(255, 251, 184);
+    --fs-h1: 72px;
+    --fs-h2: 48px;
+    --fs: 24px;
+}
+
 .gg01 {
-    border: 10px green solid;
+    border: 10px var(--color_dark);
     border-radius: 30px;
-    background-color: white;
+    background-color: var(--color_medium);
     padding: 0px;
     box-sizing: border-box;
 }
 
 .gg02 {
     border: 0px;
-    background-color: gray;
-    padding: 0;
+    background-color: var(--color_medium);
+    padding: 0px;
     box-sizing: border-box;
 }
 
 .button01 {
     border: 0px;
     border-radius: 20px;
-    background-color: green;
+    background-color: var(--color_medium);
     padding-top: 3px;
     padding-bottom: 3px;
     text-shadow: 30px;
@@ -29,11 +38,12 @@
     top: 0px;
     left: 50%;
     transform: translate(-50%,0);
+    font-size: var(--fs);
 }
 
 .button01:hover {
-    background-color: white;
-    color: green;
+    background-color: var(--color_dark);
+    color: white;
     cursor: crosshair;
 }
 
@@ -62,10 +72,14 @@
     padding: 20px 0px 0px 0px;
     margin: 5%;
     cursor: pointer;
+    background-color: var(--color_medium);
+    border: 8px var(--color_medium) solid;
 }
 
 .boxes01 div:hover {
-    border: 8px black solid;
+    background-color: var(--color_dark);
+    border: 8px var(--color_medium) solid;
+    cursor: crosshair;
 }
 
 .boxes01 div img {
