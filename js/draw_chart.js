@@ -17,7 +17,7 @@ function draw_chart(title, content){
     document.write('</tbody></table>')
 }
 
-const zw_title=',謝廷鴻,鍾葳,方東華,蔡侁甫,林峻亨'
+const zw_title=',謝廷鴻,鍾葳,方東華,蔡侁甫,林**'
 const zw_content=`進大學年度,2015,2018,2018,2020,2025\n
 國小,,,,瑞豐國小,\n
 國中,,永和國中,金華國中,瑞豐國中,\n
