@@ -1,12 +1,3 @@
-:root {
-    --color_dark: rgb(91, 89, 0);
-    --color_medium: rgb(164, 161, 0);
-    --color_light: rgb(255, 251, 184);
-    --fs-h1: 72px;
-    --fs-h2: 48px;
-    --fs: 24px;
-}
-
 .gg01 {
     border: 10px var(--color_dark);
     border-radius: 30px;
