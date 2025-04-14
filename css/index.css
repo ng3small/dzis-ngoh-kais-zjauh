@@ -10,7 +10,7 @@
 body {
     background-color: var(--color_light);
     font-family: Arial,sans-serif,;
-    /*cur: url(''),auto;*/
+    cursor: var(--cur),auto;
 }
 
 h1 {
