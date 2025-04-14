@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>我的日記</title>
+  <script src="https://unpkg.com/tabletop@1.5.3/tabletop.js"></script>
+</head>
+<body>
+  <h1>🌼 我的日記</h1>
+  <div id="diary"></div>
+
+  <script>
+    const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/13Tv0dBrSKPyB_aM1s9Y9wwg7XqCQ8j7DZAhpQoxXJnU/pubhtml';
+
+    function showInfo(data, tabletop) {
+      const container = document.getElementById('diary');
+      data.forEach(entry => {
+        const entryHTML = `
+          <div style="border:1px solid #ccc; padding:1em; margin:1em 0;">
+            <h3>${entry.date}</h3>
+            <p>${entry.content}</p>
+          </div>
+        `;
+        container.innerHTML += entryHTML;
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      Tabletop.init({
+        key: publicSpreadsheetUrl,
+        callback: showInfo,
+        simpleSheet: true
+      });
+    });
+  </script>
+</body>
+</html>
