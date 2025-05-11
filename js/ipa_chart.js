@@ -31,11 +31,27 @@ function load_table_con(title, content){
     data_content.forEach(e1=>{
         document.write('<tr>')
         e1.forEach(e2 => {
-            document.write('<td>'+(e2||'')+'</td>')
+            const id = `cell-${rowIndex}-${colIndex}`
+            document.write(`<td id="${id}" class="copy-cell">${e2 || ''}</td>`)
         })
         document.write('</tr>')
     })
     document.write('</tbody></table>')
+    setTimeout(() => {
+        const cells = document.querySelectorAll('.copy-cell')
+        cells.forEach(e2 => {
+            e2.addEventListener('click', () => {
+                const text = e2.textContent
+                if (!text) return
+
+                navigator.clipboard.writeText(text).then(() => {
+                    alert(`已複製：${text}`)
+                }).catch(err => {
+                    console.error('複製失敗', err)
+                })
+            })
+        })
+    }, 0)
 }
 
 function load_table_vow(title, content){
