@@ -34,7 +34,7 @@ list.forEach(([i,jj])=>{
 });
 //小框
 make_button("rgb(255, 133, 133)",["平","上"],"kb1");
-make_button("rgb(126, 212, 255)",["去","入"],"kb2");
+make_button("rgb(255, 133, 133)",["去","入"],"kb2");
 
 //處理遊戲資料
 let csvData=[];
