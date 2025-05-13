@@ -15,7 +15,7 @@ data_ok=[]
 
 for index,row in tqdm.tqdm(df.iterrows()):
     word=row['字']
-    value=row['聲母']
+    value=row['等呼']
 
     if word in data_word:
         index=data_word.index(word)
@@ -26,12 +26,12 @@ for index,row in tqdm.tqdm(df.iterrows()):
         data_value.append(value)
         data_ok.append(True)
 
-data=[['字','聲母']]
+data=[]
 len_=len(data_word)
 for i in tqdm.tqdm(range(len_)):
     if data_ok[i]:
         data.append([data_word[i],data_value[i]])
 
-with open('聲母.csv', 'w', newline='', encoding='utf-8') as f:
+with open('等呼.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
     writer.writerows(data)
