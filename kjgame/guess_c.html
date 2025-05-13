@@ -20,6 +20,22 @@
             src: url('font/HanaMinB.ttf') format('truetype');
             unicode-range: U+20000-2FA1F; /* CJK 擴充區範圍 */
             }
+            @keyframes flash{
+                0% {background-color: red;}
+                0% {background-color: white;}
+                0% {background-color: red;}
+            }
+            @keyframes flash_right{
+                0% {background-color: green;}
+                0% {background-color: white;}
+                0% {background-color: green;}
+            }
+            .flash{
+                animation: flash 0.5s ease;
+            }
+            .flash_right{
+                animation: flash_right 0.5s ease;
+            }
             .q{
                 font-family: 'Hana';
                 font-size: 200px;
@@ -69,76 +85,58 @@
                 padding: 0px;
             }
         </style>
+        <script>
+            let w = window.innerWidth;
+            let h = window.innerHeight;
+            function make_button(color,list,container){
+                list.forEach(char=>{
+                    function func1(){press_button(char)}
+                    const p=document.createElement("button");
+                    p.innerText=char;
+                    p.addEventListener("click",func1);
+                    p.style="background-color:"+color+";";
+                    p.id="button_"+char;
+                    document.getElementById(container).appendChild(p);
+                });
+            }
+        </script>
     </head>
-    <body>
+    <body style="background-color: rgb(255, 250, 221);">
         <p id="box_tip" class="tip">隨機按一個鍵啟動遊戲</p>
         <div id="word" class="q">字</div>
-        <p id="box_check" class="tip">隨機按一個鍵啟動遊戲</p>
-        <p id="box_num" class="tip">隨機按一個鍵啟動遊戲</p>
-        <div style="display: flex; justify-content: center;">
-            <div class="area">
-                <div class="kb">
-                    <button onclick="press_button('幫')" style="background-color: rgb(255, 102, 102);">幫</button>
-                    <button onclick="press_button('滂')" style="background-color: rgb(255, 102, 102);">滂</button>
-                    <button onclick="press_button('並')" style="background-color: rgb(255, 102, 102);">並</button>
-                    <button onclick="press_button('明')" style="background-color: rgb(255, 102, 102);">明</button>
-                </div>
-                <div class="kb">
-                    <button onclick="press_button('端')" style="background-color: rgb(94, 255, 0);">端</button>
-                    <button onclick="press_button('透')" style="background-color: rgb(94, 255, 0);">透</button>
-                    <button onclick="press_button('定')" style="background-color: rgb(94, 255, 0);">定</button>
-                    <button onclick="press_button('泥')" style="background-color: rgb(94, 255, 0);">泥</button>
-                </div>
-                <div class="kb">
-                    <button onclick="press_button('知')" style="background-color: rgb(0, 255, 136);">知</button>
-                    <button onclick="press_button('徹')" style="background-color: rgb(0, 255, 136);">徹</button>
-                    <button onclick="press_button('澄')" style="background-color: rgb(0, 255, 136);">澄</button>
-                    <button onclick="press_button('娘')" style="background-color: rgb(0, 255, 136);">娘</button>
-                </div>
-            </div>
-            <div class="area">
-                <div class="kb">
-                    <button onclick="press_button('精')" style="background-color: rgb(0, 8, 255);">精</button>
-                    <button onclick="press_button('清')" style="background-color: rgb(0, 8, 255);">清</button>
-                    <button onclick="press_button('從')" style="background-color: rgb(0, 8, 255);">從</button>
-                    <button onclick="press_button('心')" style="background-color: rgb(0, 8, 255);">心</button>
-                    <button onclick="press_button('邪')" style="background-color: rgb(0, 8, 255);">邪</button>
-                </div>
-                <div class="kb">
-                    <button onclick="press_button('莊')" style="background-color: rgb(0, 89, 255);">莊</button>
-                    <button onclick="press_button('初')" style="background-color: rgb(0, 89, 255);">初</button>
-                    <button onclick="press_button('崇')" style="background-color: rgb(0, 89, 255);">崇</button>
-                    <button onclick="press_button('生')" style="background-color: rgb(0, 89, 255);">生</button>
-                    <button onclick="press_button('俟')" style="background-color: rgb(0, 89, 255);">俟</button>
-                </div>
-                <div class="kb">
-                    <button onclick="press_button('章')" style="background-color: rgb(0, 187, 255);">章</button>
-                    <button onclick="press_button('昌')" style="background-color: rgb(0, 187, 255);">昌</button>
-                    <button onclick="press_button('常')" style="background-color: rgb(0, 187, 255);">常</button>
-                    <button onclick="press_button('書')" style="background-color: rgb(0, 187, 255);">書</button>
-                    <button onclick="press_button('船')" style="background-color: rgb(0, 187, 255);">船</button>
-                </div>
-            </div>
-            <div class="area">
-                <div class="kb">
-                    <button onclick="press_button('見')" style="background-color: rgb(251, 255, 0);">見</button>
-                    <button onclick="press_button('溪')" style="background-color: rgb(251, 255, 0);">溪</button>
-                    <button onclick="press_button('群')" style="background-color: rgb(251, 255, 0);">群</button>
-                    <button onclick="press_button('疑')" style="background-color: rgb(251, 255, 0);">疑</button>
-                </div>
-                <div class="kb">
-                    <button onclick="press_button('影')" style="background-color: rgb(255, 162, 0);">影</button>
-                    <button onclick="press_button('云')" style="background-color: rgb(255, 162, 0);">云</button>
-                    <button onclick="press_button('以')" style="background-color: rgb(255, 162, 0);">以</button>
-                    <button onclick="press_button('曉')" style="background-color: rgb(255, 162, 0);">曉</button>
-                    <button onclick="press_button('匣')" style="background-color: rgb(255, 162, 0);">匣</button>
-                </div>
-                <div class="kb">
-                    <button onclick="press_button('來')" style="background-color: rgb(170, 0, 255);">來</button>
-                    <button onclick="press_button('日')" style="background-color: rgb(170, 0, 255);">日</button>
-                </div>
-            </div>
-        </div>
+        <p id="box_check" class="tip">目前持續製作中，隨時會更新。</p>
+        <p id="box_num" class="tip">（這裡等一下顯示得分）</p>
+        <div style="display: flex; justify-content: center;" id="box_kb"></div>
+        <script>
+            if (w>h){
+                list=[[1,[1,2,3]],[2,[4,5,6]],[3,[7,8,9]]];
+            }else{
+                list=[[1,[1,2,3,4,5,6,7,8,9]]];
+            }
+            list.forEach(([i,jj])=>{
+                const p=document.createElement("div");
+                p.classList.add("area");
+                p.id="area_"+i;
+                document.getElementById("box_kb").appendChild(p);
+                jj.forEach(j=>{
+                    const pp=document.createElement("div");
+                    pp.classList.add("kb");
+                    pp.id="kb"+j;
+                    document.getElementById("area_"+i).appendChild(pp);
+                });
+            });
+        </script>
+        <script>
+            make_button("rgb(255, 133, 133)",["幫","滂","並","明"],"kb1");
+            make_button("rgb(173, 255, 126)",["端","透","定","泥"],"kb2");
+            make_button("rgb(122, 255, 153)",["知","徹","澄","娘"],"kb3");
+            make_button("rgb(118, 123, 255)",["精","清","從","心","邪"],"kb4");
+            make_button("rgb(132, 175, 255)",["莊","初","崇","生","俟"],"kb5");
+            make_button("rgb(126, 221, 255)",["章","昌","常","書","船"],"kb6");
+            make_button("rgb(253, 255, 120)",["見","溪","群","疑"],"kb7");
+            make_button("rgb(255, 209, 130)",["影","云","以","曉","匣"],"kb8");
+            make_button("rgb(212, 125, 255)",["來","日"],"kb9");
+        </script>
         <script>
         let csvData=[];
         let lenData;
@@ -167,13 +165,26 @@
                         right+=1
                         box_check.innerText='正確！「'+csvData[ran][0].trim()+'」是「'+csvData[ran][1].trim()+'」母。';
                         box_check.style.color='green';
-
+                        const buttons=document.querySelectorAll("button");
+                        buttons.forEach(btn=>{
+                            if (btn.innerText===csvData[ran][1].trim()){
+                                btn.classList.add("flash_right");
+                                setTimeout(()=>btn.classList.remove("flash_right"),500)
+                            }
+                        });
                     }else{
                         box_check.innerText='錯誤！「'+csvData[ran][0].trim()+'」是「'+csvData[ran][1].trim()+'」母。';
                         box_check.style.color='red';
+                        const buttons=document.querySelectorAll("button");
+                        buttons.forEach(btn=>{
+                            if (btn.innerText===csvData[ran][1].trim()){
+                                btn.classList.add("flash");
+                                setTimeout(()=>btn.classList.remove("flash"),500)
+                            }
+                        });
                     };
                     rate=Math.round(right/(num)*100)
-                    box_num.innerText='目前答對'+right+'題，共'+(num)+'題，答對率'+rate+'%';
+                    box_num.innerText='目前答對'+right+'/'+(num)+'，答對率'+rate+'%';
                 }
                 num+=1;
                 box_tip.innerText='第'+num+'題';
