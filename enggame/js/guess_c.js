@@ -38,13 +38,13 @@ function press_button(num){
         box_check.innerText='正式開始';
         box_num.innerText='目前答對0題，共0題';
     }else{
-        if (cor==num){
+        if (toString(cor)===num){
             right+=1
             box_check.innerText='正確！「'+csvData[ran][0].trim()+'」是「'+csvData[ran][1].trim()+'」';
             box_check.style.color='green';
             const buttons=document.querySelectorAll("button");
             buttons.forEach(btn=>{
-                if (btn.id==="option_"+cor){
+                if (btn.id==="option_"+toString(cor)){
                     btn.classList.add("flash_right");
                     setTimeout(()=>btn.classList.remove("flash_right"),500);
                 }
@@ -58,14 +58,14 @@ function press_button(num){
                     btn.classList.add("flash");
                     setTimeout(()=>btn.classList.remove("flash"),500);
                 }
-                if (btn.id==="option_"+cor){
+                if (btn.id==="option_"+toString(cor)){
                     btn.classList.add("flash_right");
                     setTimeout(()=>btn.classList.remove("flash_right"),500);
                 }
             });
         };
-        rate=Math.round(right/(sco)*100)
-        box_num.innerText='目前答對'+right+'/'+(sco)+'，答對率'+rate+'%';
+        rate=Math.round(right/sco*100)
+        box_num.innerText='目前答對'+right+'/'+sco+'，答對率'+rate+'%';
     }
     num+=1;
     box_tip.innerText='第'+num+'題';
