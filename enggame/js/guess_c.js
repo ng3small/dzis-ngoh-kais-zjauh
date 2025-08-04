@@ -17,10 +17,10 @@ list.forEach(num=>{
 //處理遊戲資料
 let csvData=[];
 let lenData;
-let ran=0;
-let cor;
-let num=0;
-let right=0;
+let ran=0;//瞬時_正確于題庫_索引
+let cor;//瞬時_正確于選項_索引
+let num=0;//題數，設題時改
+let right=0;//正確數
 fetch('data/1級.csv')
 .then(response => response.text())
 .then(csvText => {
@@ -34,6 +34,7 @@ function press_button(ch){
     const box_tip = document.getElementById("box_tip");
     const box_check = document.getElementById("box_check");
     const box_num = document.getElementById("box_num");
+    //判斷
     if (num==0){
         box_check.innerText='正式開始';
         box_num.innerText='目前答對0題，共0題';
@@ -67,14 +68,15 @@ function press_button(ch){
         rate=Math.round(right/num*100)
         box_num.innerText='目前答對'+right+'/'+num+'，答對率'+rate+'%';
     }
+    //設題
     num+=1;
     box_tip.innerText='ENG GAME之第'+num+'題';
     ran=Math.floor(Math.random()*lenData);
     cor=Math.floor(Math.random()*4);
     document.getElementById("word").innerText = csvData[ran][0];
-    [0,1,2,3].splice(cor,1).forEach(ch=>{
+    [0,1,2,3].splice(cor,1).forEach(chch=>{
         ran=Math.floor(Math.random()*lenData);
-        document.getElementById("option_"+ch).innerText = csvData[ran][1];
+        document.getElementById("option_"+chch).innerText = csvData[ran][1];
     });
     document.getElementById("option_"+cor).innerText = csvData[ran][1];
 }
