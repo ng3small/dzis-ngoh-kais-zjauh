@@ -58,10 +58,10 @@ function press_button(ch){
                     btn.classList.add("flash_right");
                     setTimeout(()=>btn.classList.remove("flash_right"),500);
                 }
-                //if (btn.id==="option_"+toString(cor)){
-                //    btn.classList.add("flash_right");
-                //    setTimeout(()=>btn.classList.remove("flash_right"),500);
-                //}
+                if (btn.id==="option_"+toString(cor)){
+                    btn.classList.add("flash_right");
+                    setTimeout(()=>btn.classList.remove("flash_right"),500);
+                }
             });
         };
         rate=Math.round(right/num*100)
