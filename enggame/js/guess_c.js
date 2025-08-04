@@ -68,7 +68,7 @@ function press_button(ch){
         box_num.innerText='目前答對'+right+'/'+num+'，答對率'+rate+'%';
     }
     num+=1;
-    box_tip.innerText='第'+num+'題';
+    box_tip.innerText='廣韻猜聲母之第'+num+'題';
     ran=Math.floor(Math.random()*lenData);
     cor=Math.floor(Math.random()*4);
     document.getElementById("word").innerText = csvData[ran][0];
