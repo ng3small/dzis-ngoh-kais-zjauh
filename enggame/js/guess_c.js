@@ -54,14 +54,14 @@ function press_button(ch){
             box_check.style.color='red';
             const buttons=document.querySelectorAll("button");
             buttons.forEach(btn=>{
-                //if (btn.id==="option_"+ch){
-                //    btn.classList.add("flash");
-                //    setTimeout(()=>btn.classList.remove("flash"),500);
-                //}
-                if (btn.id==="option_"+toString(cor)){
-                    btn.classList.add("flash_right");
-                    setTimeout(()=>btn.classList.remove("flash_right"),500);
+                if (btn.id==="option_"+ch){
+                    btn.classList.add("flash");
+                    setTimeout(()=>btn.classList.remove("flash"),500);
                 }
+                //if (btn.id==="option_"+toString(cor)){
+                //    btn.classList.add("flash_right");
+                //    setTimeout(()=>btn.classList.remove("flash_right"),500);
+                //}
             });
         };
         rate=Math.round(right/num*100)
