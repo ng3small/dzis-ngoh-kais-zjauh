@@ -19,7 +19,7 @@ let csvData=[];
 let lenData;
 let ran=0;
 let cor;
-let sco=0;
+let num=0;
 let right=0;
 fetch('data/1級.csv')
 .then(response => response.text())
@@ -30,15 +30,15 @@ fetch('data/1級.csv')
     lenData = rows.length;
 });
 //遊戲中按鈕反應
-function press_button(num){
+function press_button(ch){
     const box_tip = document.getElementById("box_tip");
     const box_check = document.getElementById("box_check");
     const box_num = document.getElementById("box_num");
-    if (sco==0){
+    if (num==0){
         box_check.innerText='正式開始';
         box_num.innerText='目前答對0題，共0題';
     }else{
-        if (toString(cor)===num){
+        if (toString(cor)===ch){
             right+=1
             box_check.innerText='正確！「'+csvData[ran][0].trim()+'」是「'+csvData[ran][1].trim()+'」';
             box_check.style.color='green';
@@ -54,7 +54,7 @@ function press_button(num){
             box_check.style.color='red';
             const buttons=document.querySelectorAll("button");
             buttons.forEach(btn=>{
-                if (btn.id==="option_"+num){
+                if (btn.id==="option_"+ch){
                     btn.classList.add("flash");
                     setTimeout(()=>btn.classList.remove("flash"),500);
                 }
@@ -64,13 +64,17 @@ function press_button(num){
                 }
             });
         };
-        rate=Math.round(right/sco*100)
-        box_num.innerText='目前答對'+right+'/'+sco+'，答對率'+rate+'%';
+        rate=Math.round(right/num*100)
+        box_num.innerText='目前答對'+right+'/'+num+'，答對率'+rate+'%';
     }
     num+=1;
     box_tip.innerText='第'+num+'題';
     ran=Math.floor(Math.random()*lenData);
     cor=Math.floor(Math.random()*4);
     document.getElementById("word").innerText = csvData[ran][0];
+    [0,1,2,3].splice(cor,1).forEach(ch=>{
+        ran=Math.floor(Math.random()*lenData);
+        document.getElementById("option_"+ch).innerText = csvData[ran][1];
+    });
     document.getElementById("option_"+cor).innerText = csvData[ran][1];
 }
