@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="zh">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <title>科學史小測驗</title>
@@ -15,31 +16,26 @@
 <body>
   <div id="quiz">
     <h2>科學史小測驗</h2>
-    <input type="file" id="fileInput" accept=".csv"><br><br>
     <div id="game" style="display:none;">
       <div id="questionContainer"></div>
       <div class="options" id="options"></div>
       <button id="nextBtn" style="display:none;">下一題</button>
     </div>
     <div id="score"></div>
-  </div>  <script>
+  </div>
+
+  <script>
     let questions = [];
     let currentIndex = 0;
     let score = 0;
 
-    document.getElementById('fileInput').addEventListener('change', handleFile);
-
-    function handleFile(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const text = e.target.result;
+    // 自動載入同目錄下的 CSV 檔
+    fetch('科學史.csv')
+      .then(response => response.text())
+      .then(text => {
         parseCSV(text);
         startGame();
-      };
-      reader.readAsText(file, 'UTF-8');
-    }
+      });
 
     function parseCSV(data) {
       const lines = data.split(/\r?\n/).filter(l => l.trim().length > 0);
@@ -116,5 +112,6 @@
     function shuffle(arr) {
       return arr.sort(() => Math.random() - 0.5);
     }
-  </script></body>
+  </script>
+</body>
 </html>
